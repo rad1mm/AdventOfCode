@@ -9,7 +9,8 @@ namespace Day1
     {
         static void Main(string[] args)
         {
-            var inputs = InputReader.Read("C:\\Users\\radovan.susuk\\Documents\\AdventOfCode\\Day1\\input\\input.txt").Select(i => i.ChangeType<int>()).ToArray();
+            var inputs = InputReader.Read("C:\\Users\\radovan.susuk\\Documents\\AdventOfCode\\Day1\\input\\input.txt")
+                .ChangeArrayType<int>();
 
             int biggerNumbers = 0;
 

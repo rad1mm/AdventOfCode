@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using DomainLogic;
 
 namespace Shared
@@ -20,6 +21,11 @@ namespace Shared
             }
 
             return (T)Convert.ChangeType(obj, typeof(T));
+        }
+
+        public static T[] ChangeArrayType<T>(this string[] array)
+        {
+            return array.Select(i => i.ChangeType<T>()).ToArray();
         }
         
         private static object ParseDirection(string text)
