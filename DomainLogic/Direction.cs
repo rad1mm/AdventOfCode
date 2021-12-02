@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DomainLogic
+﻿namespace DomainLogic
 {
     public enum Direction
     {

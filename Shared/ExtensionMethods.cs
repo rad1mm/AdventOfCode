@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using DomainLogic;
 
-namespace Shared.IO
+namespace Shared
 {
     public static class ExtensionMethods
     {
-
         private static Dictionary<Type, Func<string,object>> specialTypesList = new Dictionary<Type, Func<string,object>>()
         {
             [typeof(Direction)] = ParseDirection

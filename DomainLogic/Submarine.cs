@@ -1,56 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DomainLogic
 {
     public class Submarine
     {
+        private Dictionary<Direction, Action<int>> directedMovesDictionary;
         public Submarine()
         {
             Position = new Position();
+            InitActionDictionary();
         }
 
         public Position Position { get; private set; }
 
         public void Move(MoveParameters newMove)
         {
-            switch (newMove.Direction)
+            if (!directedMovesDictionary.TryGetValue(newMove.Direction, out var directedMove))
             {
-                case Direction.Up:
-                {
-                    MoveUpwards(newMove.Length);
-                    break;
-                }
-                case Direction.Down:
-                {
-                    MoveDownwards(newMove.Length);
-                    break;
-                }
-                case Direction.Forward:
-                {
-                    MoveForward(newMove.Length);
-                    break;
-                }
-                default:
-                    throw new ArgumentException($"Invalid value {newMove.Direction}", nameof(newMove.Direction));
+                throw new ArgumentException($"Invalid value {newMove.Direction}", nameof(newMove.Direction));
             }
+
+            directedMove(newMove.Distance);
         }
 
-        private void MoveUpwards(int length)
+        private void InitActionDictionary()
         {
-            Position.Aim -= length;
+            directedMovesDictionary = new Dictionary<Direction, Action<int>>()
+            {
+                [Direction.Down] = MoveDownwards,
+                [Direction.Up] = MoveUpwards,
+                [Direction.Forward] = MoveForward
+            };
         }
 
-        private void MoveDownwards(int length)
+        private void MoveUpwards(int distance)
         {
-            Position.Aim += length;
+            Position.Aim -= distance;
         }
 
-        private void MoveForward(int length)
+        private void MoveDownwards(int distance)
         {
-            Position.Horizontal += length;
-            Position.Vertical += Position.Aim * length;
+            Position.Aim += distance;
+        }
+
+        private void MoveForward(int distance)
+        {
+            Position.Horizontal += distance;
+            Position.Vertical += Position.Aim * distance;
         }
     }
 }

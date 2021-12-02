@@ -1,5 +1,6 @@
 ﻿using Shared.IO;
 using System;
+using Shared;
 
 namespace Day1
 {
