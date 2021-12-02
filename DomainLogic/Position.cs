@@ -21,9 +21,11 @@ namespace DomainLogic
             }
         }
 
+        public int Aim { get; set; } = 0;
+
         public override string ToString()
         {
-            return $"Horizontal position: {Horizontal},   Vertical Position: {Vertical}";
+            return $"Horizontal position: {Horizontal},   Vertical Position: {Vertical},   Aim: {Aim}";
         }
     }
 }

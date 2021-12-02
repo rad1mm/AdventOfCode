@@ -39,17 +39,18 @@ namespace DomainLogic
 
         private void MoveUpwards(int length)
         {
-            Position.Vertical -= length;
+            Position.Aim -= length;
         }
 
         private void MoveDownwards(int length)
         {
-            Position.Vertical += length;
+            Position.Aim += length;
         }
 
         private void MoveForward(int length)
         {
             Position.Horizontal += length;
+            Position.Vertical += Position.Aim * length;
         }
     }
 }
