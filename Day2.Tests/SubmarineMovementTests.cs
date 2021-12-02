@@ -21,42 +21,6 @@ namespace Day2.Tests
         }
 
         [Test]
-        [TestCase(5)]
-        [TestCase(30)]
-        [TestCase(20000)]
-        public void WhenMovesDown_AddsToVerticalPosition_TotalVerticalPositionIncreasesByLength(int verticalLength)
-        {
-            Submarine submarine = new Submarine();
-            int expectedVerticalPosition = submarine.Position.Vertical + verticalLength;
-            submarine.Move(new MoveParameters(Direction.Down, verticalLength));
-
-            Assert.That(submarine.Position.Vertical, Is.EqualTo(expectedVerticalPosition));
-        }
-
-        
-        [Test]
-        [TestCase(30)]
-        public void WhenMovesUp_MovesLessThanActualDepth_TotalVerticalPositionDecreasesByLength(int verticalLength)
-        {
-            Submarine submarine = new Submarine();
-            submarine.Move(new MoveParameters(Direction.Down, verticalLength * 2));
-            int expectedVerticalPosition = submarine.Position.Vertical - verticalLength;
-            submarine.Move(new MoveParameters(Direction.Up, verticalLength));
-
-            Assert.That(submarine.Position.Vertical, Is.EqualTo(expectedVerticalPosition));
-        }
-
-        [Test]
-        [TestCase(5)]
-        public void WhenMovesUp_MoreThanSubmarinesDepth_ThrowsException(int verticalLength)
-        {
-            Submarine submarine = new Submarine();
-            int expectedVerticalPosition = submarine.Position.Vertical + verticalLength;
-
-            Assert.Throws<ApplicationException>(()=> submarine.Move(new MoveParameters(Direction.Up, verticalLength)));
-        }
-
-        [Test]
         public void WhenAimIsZero_MovesForward_DepthDoesntChange()
         {
             Submarine submarine = new Submarine();
@@ -118,7 +82,6 @@ namespace Day2.Tests
 
             Assert.That(submarine.Position.Vertical, Is.EqualTo(60));
         }
-
     }
 
     
