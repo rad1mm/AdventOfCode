@@ -1,4 +1,3 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29905.134
@@ -9,7 +8,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "..\Shared\Shared.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day2", "..\Day2\Day2.csproj", "{A6883013-75D6-41D0-A017-D20F445A1396}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainTests.Tests", "..\Day2.Tests\DomainTests.Tests.csproj", "{290F980A-6A4A-4CD9-8A2F-D5248D830778}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Tests", "..\Domain.Tests\Domain.Tests.csproj", "{290F980A-6A4A-4CD9-8A2F-D5248D830778}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainLogic", "..\DomainLogic\DomainLogic.csproj", "{44D279F8-B28D-4D7B-BF3D-DC61F6E1D655}"
 EndProject
