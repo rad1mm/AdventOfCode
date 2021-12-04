@@ -32,12 +32,9 @@ namespace Day3
             Console.ReadKey();
 
             //part2
-
-            var oxygenGeneratorCodeList = input.ToList();
-            var co2ScrubberCodeList = input.ToList();
-
-            int oxygenGenerator = Convert.ToInt32(String.Join("", FindCodesForBitPosition(oxygenGeneratorCodeList, 0, EqualOrGreaterThan)[0]), 2);
-            int co2Scrubber = Convert.ToInt32(String.Join("", FindCodesForBitPosition(co2ScrubberCodeList, 0, LessThan)[0]), 2);
+            
+            int oxygenGenerator = Convert.ToInt32(String.Join("", FindCodesForBitPosition(input.ToList(), 0, EqualOrGreaterThan)[0]), 2);
+            int co2Scrubber = Convert.ToInt32(String.Join("", FindCodesForBitPosition(input.ToList(), 0, LessThan)[0]), 2);
 
             Console.WriteLine($"Life support rating is: {oxygenGenerator * co2Scrubber}");
             Console.ReadKey();
