@@ -37,15 +37,9 @@ namespace Day3
 
             var oxygenGeneratorCodeList = input.ToList();
             var co2ScrubberCodeList = input.ToList();
-            
-            for (int i = 0; i < codeLength; i++)
-            {
-                oxygenGeneratorCodeList = FindCodesForBitPosition(oxygenGeneratorCodeList, i, GreaterOrEqualThan);
-                co2ScrubberCodeList = FindCodesForBitPosition(co2ScrubberCodeList, i, LessThan);
-            }
 
-            int oxygenGenerator = Convert.ToInt32(String.Join("", oxygenGeneratorCodeList[0]), 2);
-            int co2Scrubber = Convert.ToInt32(String.Join("", co2ScrubberCodeList[0]), 2);
+            int oxygenGenerator = Convert.ToInt32(String.Join("", FindCodesForBitPosition(oxygenGeneratorCodeList, 0, GreaterOrEqualThan)[0]), 2);
+            int co2Scrubber = Convert.ToInt32(String.Join("", FindCodesForBitPosition(co2ScrubberCodeList, 0, LessThan)[0]), 2);
 
             Console.WriteLine($"Life support rating is: {oxygenGenerator * co2Scrubber}");
             Console.ReadKey();
@@ -57,9 +51,9 @@ namespace Day3
 
             var newCodeList = inputPositions.Where(code => code[bitPosition] == '1').ToList();
 
-            return comparisonStrategy(newCodeList.Count, inputPositions.Count / (double)2) ?
+            return FindCodesForBitPosition(comparisonStrategy(newCodeList.Count, inputPositions.Count / (double)2) ?
                 newCodeList :
-                inputPositions.Except(newCodeList).ToList();
+                inputPositions.Except(newCodeList).ToList(), bitPosition+1,comparisonStrategy);
         }
 
         private static bool LessThan(int first, double second)
