@@ -27,7 +27,7 @@ namespace Shared
         {
             return array.Select(i => i.ChangeType<T>()).ToArray();
         }
-        
+
         private static object ParseDirection(string text)
         {
             switch (text)
