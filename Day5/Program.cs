@@ -3,8 +3,6 @@ using Shared.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Shared;
 
 namespace Day5
@@ -33,19 +31,15 @@ namespace Day5
 
                 lines.Add(new Line(x1, y1, x2, y2));
 
-                minX = x1 < minX ? x1 : minX;
-                minX = x2 < minX ? x2 : minX;
-                minY = y1 < minY ? y1 : minY;
-                minY = y2 < minY ? y2 : minY;
-                maxX = x1 > maxX ? x1 : maxX;
-                maxX = x2 > maxX ? x2 : maxX;
-                maxY = y1 > maxY ? y1 : maxY;
-                maxY = y2 > maxY ? y2 : maxY;
+                minX = x1 < minX || x2 < minX ? Math.Min(x1, x2) : minX;
+                minY = y1 < minY || y2 < minY ? Math.Min(y1, y2) : minY;
+                maxX = x1 > maxX || x2 > maxX ? Math.Max(x1, x2) : maxX;
+                maxY = y1 > maxY || y2 > maxY ? Math.Max(y1, y2) : maxY;
             }
 
             int dimensionX = maxX - minX + 1;
             int dimensionY = maxY - minY + 1;
-            int[,] diagram = new int[dimensionX,dimensionY];
+            var diagram = new int[dimensionX,dimensionY];
 
             foreach (var point in lines.SelectMany(line => line.PointsCovered))
             {
