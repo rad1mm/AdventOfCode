@@ -19,11 +19,7 @@ namespace Day7
             {
                 //int cumulativeDistanceToPosition = input.Select(position => Math.Abs(position - i)).Sum(); part1
                 int cumulativeDistanceToPosition = input.Select(position => Math.Abs(position - i)).Select(nPlaces => (int)(nPlaces / (double)2 * (nPlaces + 1))).Sum(); // part2
-
-                if (cumulativeDistanceToPosition < minPositionDistance)
-                {
-                    minPositionDistance = cumulativeDistanceToPosition;
-                }
+                minPositionDistance = cumulativeDistanceToPosition < minPositionDistance ? cumulativeDistanceToPosition : minPositionDistance;
             }
 
             Console.WriteLine($"Fuel spent: {minPositionDistance}");
